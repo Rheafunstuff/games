@@ -25,10 +25,27 @@ def update():
     global items
     if len(items)==0:
         items=makeitems(currentlevel)
+
 def makeitems(number_of_extra_items):
     itemstocreate=optiontocreate(number_of_extra_items)
     newitems=createitems(itemstocreate)
     layoutitems(newitems)
     animateitems(newitems)
     return newitems
+
+#getting the extra non recycleable items with the paper one
+def optiontocreate(number_of_extra_items):
+    itemstocreate = ["paperbag"] 
+    for i in range(number_of_extra_items):
+        random_option = random.choice(non_recycleable)
+        itemstocreate.append(random_option)
+    return itemstocreate
+
+#using it to convert items into actors
+def createitems(itemstocreate):
+    new_items = []
+    for item in itemstocreate:
+        new_actor = Actor(item)
+
+
 pgzrun.go()
